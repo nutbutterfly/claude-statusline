@@ -155,6 +155,7 @@ BLUE='\033[1;34m'
 WHITE='\033[37m'
 DIM='\033[2m'
 RESET='\033[0m'
+MODEL_COLOR='\033[1;35m'
 
 # Git branch for cwd, with a dirty/clean marker
 git_info=""
@@ -243,7 +244,7 @@ render_meter() {
     prefix=""
     [ "$is_cached" -eq 1 ] && prefix="~"
     pct_str=$(printf '%s%.0f%%' "$prefix" "$pct")
-    meter_part="${WHITE}${label}${RESET} ${bar_str} ${meter_color}$(printf '%4s' "$pct_str")${RESET}"
+    meter_part="${WHITE}${label}${RESET} ${bar_str} ${meter_color}$(printf '%-4s' "$pct_str")${RESET}"
     [ -n "$reset" ] && meter_part="${meter_part}  ${DIM}resets ${reset}${RESET}"
   else
     meter_part="${WHITE}${label}${RESET} ${bar_str} ${DIM}n/a${RESET}"
@@ -262,7 +263,7 @@ add_segment() {
     line1="${line1}${divider}$1"
   fi
 }
-[ -n "$model_name" ] && add_segment "${WHITE}${model_name}${RESET}"
+[ -n "$model_name" ] && add_segment "${MODEL_COLOR}${model_name}${RESET}"
 [ -n "$ctx_used" ] && add_segment "${BLUE}ctx${RESET} $(printf '%.0f' "$ctx_used")%"
 add_segment "$git_info"
 [ -n "$effort_level" ] && add_segment "${YELLOW}effort${RESET} ${effort_level}"

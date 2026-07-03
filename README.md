@@ -11,6 +11,7 @@ Sonnet 5 · ctx 42% · on develop ✔ · effort high
 budget ━──────────── $10.42 / $100
 ```
 
+- The model name is bold and colored, so it's the first thing your eye catches on line 1.
 - Every bar lines up in a neat column no matter how long its label is.
 - Bar color tells you how you're doing: green is fine, yellow means slow down, red means you're
   close to the limit.
